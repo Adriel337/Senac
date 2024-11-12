@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Inicial</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #121212;
+      color: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero {
+      padding: 2em 1em;
+      background-color: #1a1a1a;
+      width: 100%;
+      border-bottom: 1px solid #333;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      text-align: center; /* Centraliza todo o conteúdo da seção hero */
+    }
+
+    .hero h1 {
+      font-family: 'Arial Black', sans-serif;
+      color: #ff3b3f;
+      font-size: 3em;
+      letter-spacing: 1px;
+      margin-bottom: 0.5em;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero p {
+      font-size: 1.5em;
+      color: #f4f4f4;
+      margin-bottom: 1.5em;
+      max-width: 600px; /* Limita a largura do texto */
+      text-align: center; /* Centraliza o texto do parágrafo */
+    }
+
+    .gallery {
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+      padding: 2em 1em;
+      gap: 1.5em; /* Aumenta o espaço entre os itens */
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    figure {
+      text-align: center;
+      background: #1a1a1a;
+      border-radius: 12px; /* Arredondar mais os cantos */
+      padding: 15px; /* Aumenta o padding */
+      transition: transform 0.3s, box-shadow 0.3s; /* Adiciona transição para sombra */
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    figure:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 12px; /* Arredondar mais os cantos das imagens */
+      transition: transform 0.3s;
+      border: 3px solid #ff3b3f; /* Adiciona uma borda nas imagens */
+    }
+
+    figcaption {
+      margin-top: 8px;
+      font-size: 1em;
+      color: #b5b5b5;
+    }
+
+    .price {
+      font-size: 1.2em;
+      color: #ff3b3f;
+      font-weight: bold;
+      margin-top: 4px;
+      display: block;
+    }
+
+    .carrinho-icon {
+  position: fixed;
+  top: 100px; /* Ajuste a distância entre o ícone de conta e o ícone do carrinho */
+  right: 20px; 
+  width: 60px;
+}
+
+.carrinho-icon img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.carrinho-icon img:hover {
+  transform: scale(1.1);
+}
+
+    .stars {
+      margin-top: 5px; /* Espaço acima das estrelas */
+    }
+
+    .star {
+      color: gold; /* Cor das estrelas */
+      font-size: 1.5em; /* Tamanho das estrelas */
+    }
+
+    /* Estilos do ícone de chat */
+    .chat-icon {
+      position: fixed;
+      bottom: 20px;
+      left: 20px; 
+      width: 60px; 
+    }
+
+    .chat-icon img {
+      width: 100%;
+      height: auto;
+      border-radius: 50%; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .chat-icon img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Estilos do ícone da conta do usuário */
+    .user-icon {
+      position: fixed;
+      top: 20px;
+      right: 20px; /* Ajusta a posição */
+      width: 60px; 
+    }
+
+    .user-icon img {
+      width: 100%;
+      height: auto;
+      border-radius: 50%; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .user-icon img:hover {
+      transform: scale(1.1);
+    }
+
+    .add-to-cart-btn {
+    background-color: #ff3b3f; /* Cor vermelha vibrante */
+    color: white;
+    font-size: 1.1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    width: 100%; /* Botão ocupa a largura total da figura */
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    text-align: center;
+  }
+
+  .add-to-cart-btn:hover {
+    background-color: #e03e42; /* Tom de vermelho mais escuro */
+    transform: translateY(-2px); /* Leve movimento para cima */
+  }
+
+  .add-to-cart-btn:active {
+    background-color: #c03338; /* Cor de fundo mais escura quando clicado */
+    transform: translateY(2px); /* Movimento para baixo quando pressionado */
+  }
+
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <h1>Starry Style</h1>
+    <p>Explore as últimas tendências do streetwear com peças exclusivas.</p>
+  </section>
+
+  <section class="gallery">
+    <figure>
+      <a href="roupa0.html">
+        <img src="roupa0.jpeg" alt="Shorts masculinos de streetwear com cordão">
+      </a>
+      <figcaption>
+        Suéter de gola redonda com padrão gráfico Cyber Y2k Sweater - Black
+        <span class="price">R$ 110,97</span>
+      </figcaption>
+      <div class="stars">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">☆</span> <!-- Uma estrela vazia -->
+      </div>
+    </figure>
+    <figure>
+      <a href="roupa1.html">
+        <img src="roupa1.jpeg" alt="Camisa de streetwear masculina vintage">
+      </a>
+      <figcaption>
+        Calça jeans reta Denim Black vintage
+        <span class="price">R$ 145,88</span>
+      </figcaption>
+      <div class="stars">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">☆</span>
+        <span class="star">☆</span>
+      </div>
+    </figure>
+    <figure>
+      <a href="roupa2.html">
+        <img src="roupa2.jpeg" alt="Camiseta masculina oversized de streetwear">
+      </a>
+      <figcaption>
+        Calça cargo Destroyed larga solta
+        <span class="price">R$ 175,90</span>
+      </figcaption>
+      <div class="stars">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">☆</span>
+      </div>
+    </figure>
+    <figure>
+      <a href="roupa3.html">
+        <img src="roupa3.jpeg" alt="Camiseta regata oversized casual">
+      </a>
+      <figcaption>
+        Camisa carta gráfica unisex streetwear
+        <span class="price">R$ 69,97</span>
+      </figcaption>
+      <div class="stars">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span> <!-- Todas as estrelas preenchidas -->
+      </div>
+    </figure>
+    <figure>
+      <a href="roupa4.html">
+        <img src="roupa4.jpeg" alt="Camiseta de streetwear com estampa colorida">
+      </a>
+      <figcaption>
+        Jaqueta masculina de couro Slim Fittpu com zíper
+        <span class="price">R$ 119,90</span>
+      </figcaption>
+      <div class="stars">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+      </div>
+    </figure>
+    <figure>
+      <a href="roupa5.html">
+        <img src="roupa5.jpeg" alt="Camiseta masculina de algodão orgânico">
+      </a>
+      <figcaption>
+        Camisa Oversized streetwear com gola redonda
+        <span class="price">R$ 50,00</span>
+      </figcaption>
+      <div class="stars">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">☆</span>
+      </div>
+    </figure>
+    <figure>
+      <a href="roupa6.html">
+        <img src="roupa6.jpeg" alt="Moletom com capuz estilo urbano">
+      </a>
+      <figcaption>
+        Camisa T-shirt streetwear japonais IIIusion
+        <span class="price">R$ 75,90</span>
+      </figcaption>
+      <div class="stars">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+      </div>
+    </figure>
+    <figure>
+      <a href="roupa7.html">
+        <img src="roupa7.jpeg" alt="Calça jogger de streetwear">
+      </a>
+      <figcaption>
+        Jaqueta Caxemira Two Oversized felpuda
+        <span class="price">R$ 123,90</span>
+      </figcaption>
+      <div class="stars">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">☆</span>
+        <span class="star">☆</span>
+      </div>
+    </figure>
+    <figure>
+      <a href="roupa8.html">
+        <img src="roupa8.jpeg" alt="Camiseta de streetwear oversized">
+      </a>
+      <figcaption>
+        Calça demin baggy estampa estrelas
+        <span class="price">R$ 190,50</span>
+      </figcaption>
+      <div class="stars">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">☆</span>
+        <span class="star">☆</span>
+      </div>
+    </figure>
+    <figure>
+      <a href="roupa9.html">
+        <img src="roupa9.jpeg" alt="Camiseta de streetwear oversized">
+      </a>
+      <figcaption>
+        Camisa vintage oversized estampada
+        <span class="price">R$ 79,90</span>
+      </figcaption>
+      <div class="stars">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">☆</span>
+      </div>
+    </figure>
+    <figure>
+      <a href="roupa10.html">
+        <img src="roupa10.jpeg" alt="Camiseta de streetwear oversized">
+      </a>
+      <figcaption>
+        Camisa Oversized streetwear com gola redonda
+        <span class="price">R$ 80,00</span>
+      </figcaption>
+      <div class="stars">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+      </div>
+    </figure>
+    <figure>
+      <a href="roupa11.html">
+        <img src="roupa11.jpeg" alt="Camiseta de streetwear oversized">
+      </a>
+      <figcaption>
+        Moletom com capuz Street Life
+        <span class="price">R$ 140,99</span>
+      </figcaption>
+      <div class="stars">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+    </figure>
+  </section>
+
+  <div class="user-icon">
+    <a href="conta.html">
+      <img src="perfil.jpeg" alt="Conta do usuário">
+    </a>
+  </div>
+
+  <div class="chat-icon">
+    <a href="chat.html">
+      <img src="chat.jpeg" alt="Chat com a equipe">
+    </a>
+  </div>
+
+</body>
+
+<script>
+  // Função para adicionar itens ao carrinho
+  function adicionarAoCarrinho(nome, preco) {
+    // Obter o carrinho atual do localStorage ou criar um novo array se for nulo
+    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    
+    // Criar um objeto representando o item
+    let item = { nome: nome, preco: preco };
+    
+    // Adicionar o item ao carrinho
+    carrinho.push(item);
+    
+    // Salvar o carrinho atualizado no localStorage
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    
+    // Exibir mensagem de confirmação
+    alert(`${nome} foi adicionado ao carrinho!`);
+  }
+
+  // Função para exibir os itens no carrinho (exemplo básico)
+  function exibirCarrinho() {
+    // Obter o carrinho do localStorage
+    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    
+    // Limpar a área de exibição do carrinho
+    let container = document.getElementById('carrinho-itens');
+    container.innerHTML = ''; // Limpa os itens anteriores
+    
+    // Exibir cada item
+    carrinho.forEach(item => {
+      let div = document.createElement('div');
+      div.textContent = `Produto: ${item.nome}, Preço: ${item.preco}`;
+      container.appendChild(div);
+    });
+  }
+
+  // Exibir o carrinho ao carregar a página (opcional)
+  window.onload = function() {
+    exibirCarrinho();
+  };
+</script>
+
+</html>

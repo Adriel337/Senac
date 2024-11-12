@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Perfil</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #121212;
+      color: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-family: 'Arial Black', sans-serif;
+      color: #ff3b3f;
+      margin-bottom: 1em;
+    }
+
+    .form-container {
+      background-color: #1a1a1a;
+      padding: 2em;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      width: 400px;
+    }
+
+    .form-group {
+      margin-bottom: 1.5em;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5em;
+      color: #b5b5b5;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #333;
+      border-radius: 4px;
+      background-color: #222;
+      color: #f4f4f4;
+    }
+
+    input[type="file"] {
+      border: none; /* Remove a borda do input de arquivo */
+    }
+
+    .submit-button {
+      background-color: #ff3b3f;
+      color: #f4f4f4;
+      border: none;
+      padding: 12px;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 1em;
+      width: 100%;
+    }
+
+    .submit-button:hover {
+      background-color: #ff5e5e;
+    }
+
+    .cancel-button {
+      background-color: transparent;
+      color: #ff3b3f;
+      border: 1px solid #ff3b3f;
+      padding: 12px;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 1em;
+      width: 100%;
+    }
+
+    .cancel-button:hover {
+      background-color: #ff3b3f;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Editar Perfil</h1>
+  <div class="form-container">
+    <form>
+      <div class="form-group">
+        <label for="username">Nome de Usuário</label>
+        <input type="text" id="username" name="username" placeholder="Seu nome de usuário" required>
+      </div>
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Senha</label>
+        <input type="password" id="password" name="password" placeholder="Nova senha (opcional)">
+      </div>
+      <div class="form-group">
+        <label for="profile-picture">Imagem do Perfil</label>
+        <input type="file" id="profile-picture" name="profile-picture" accept="image/*">
+      </div>
+      <button type="submit" class="submit-button" onclick="window.location.href='inicial.html'">Salvar Alterações</button>
+      <button type="button" class="cancel-button" onclick="window.location.href='inicial.html'">Cancelar</button>
+    </form>
+  </div>
+
+</body>
+</html>

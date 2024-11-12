@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compra - Regata</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: #121212;
+      color: #f4f4f4;
+      text-align: center;
+    }
+
+    .product-container {
+      background-color: #1a1a1a;
+      padding: 2em;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      width: 90%;
+      max-width: 320px;
+      text-align: center;
+    }
+
+    .product-container img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      margin-bottom: 1em;
+    }
+
+    h2 {
+      font-family: 'Arial Black', sans-serif;
+      color: #ff3b3f;
+      font-size: 1.8em;
+      margin-bottom: 0.5em;
+    }
+
+    p.description {
+      color: #b5b5b5;
+      font-size: 1em;
+      margin-bottom: 1em;
+    }
+
+    .price {
+      font-size: 1.5em;
+      color: #ff3b3f;
+      font-weight: bold;
+      margin-bottom: 1em;
+    }
+
+    .buy-button {
+      background: linear-gradient(45deg, #ff3b3f, #ff5e5e);
+      color: #f4f4f4;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 1em;
+      margin-top: 1em; /* Espaço acima do botão */
+    }
+
+    .buy-button:hover {
+      transform: scale(1.05);
+    }
+
+    /* Estilo para estrelas */
+    .stars {
+      margin: 1em 0;
+      font-size: 1.5em; /* Tamanho maior das estrelas */
+      color: gold; /* Cor das estrelas preenchidas */
+    }
+
+    .star {
+      margin: 0 2px; /* Espaçamento entre as estrelas */
+    }
+
+    .star:hover {
+      color: #ffdf00; /* Cor das estrelas ao passar o mouse */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="product-container">
+    <img src="roupa9.jpeg" alt="Calça jogger de streetwear">
+    <h2>Camisa</h2>
+    <p class="description">Vintage oversized estampada.</p>
+    <span class="price">R$ R$ 79,90</span>
+    <div class="stars">
+      <span class="star">★</span>
+      <span class="star">★</span>
+      <span class="star">★</span>
+      <span class="star">★</span>
+      <span class="star">☆</span> <!-- Todas as estrelas preenchidas -->
+    </div>
+    <button class="buy-button" onclick="window.location.href='finalizar.html'">Finalizar Compra</button>
+  </div>
+
+</body>
+</html>

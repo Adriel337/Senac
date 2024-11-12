@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat Streetwear</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Oswald', sans-serif;
+      background: linear-gradient(to right, #00b3b3, #ff0055); /* Gradiente bonito */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #f5f5f5;
+    }
+
+    .chat-window {
+      width: 90%;
+      max-width: 400px;
+      background: rgba(44, 44, 44, 0.85); /* Fundo escuro */
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(10px); /* Maior desfoque para dar um efeito mais moderno */
+      border: 2px solid #ff0055;
+    }
+
+    .chat-header {
+      background-color: #ff0055;
+      color: white;
+      padding: 16px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .chat-messages {
+      padding: 16px;
+      overflow-y: auto;
+      max-height: 300px;
+      scrollbar-width: thin;
+      scrollbar-color: #ff0055 transparent;
+    }
+
+    .chat-messages::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .chat-messages::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .chat-messages::-webkit-scrollbar-thumb {
+      background-color: #ff0055;
+      border-radius: 3px;
+    }
+
+    .chat-message {
+      margin: 10px 0;
+      padding: 12px 16px;
+      border-radius: 8px;
+      max-width: 80%;
+      word-wrap: break-word;
+      position: relative;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .chat-message:hover {
+      transform: translateX(4px);
+    }
+
+    .chat-message.user {
+      background-color: #ffb400;
+      color: #1b1b1b;
+      align-self: flex-start;
+      border-left: 4px solid #ff0055;
+    }
+
+    .chat-message.agent {
+      background-color: #00e6e6;
+      color: #1b1b1b;
+      align-self: flex-end;
+      border-right: 4px solid #ff0055;
+    }
+
+    .send-message-container {
+      padding: 10px;
+      display: flex;
+      border-top: 2px solid #ff0055;
+    }
+
+    .send-message-container input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      border: 2px solid #ff0055;
+      border-radius: 6px;
+      margin-right: 10px;
+      font-size: 14px;
+    }
+
+    .send-message-container button {
+      padding: 10px 20px;
+      background-color: #ff0055;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .send-message-container button:hover {
+      background-color: #ff3366;
+    }
+
+    .user-icon {
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    .user-icon img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.3s;
+      border: 2px solid #ff0055;
+    }
+
+    .user-icon img:hover {
+      transform: scale(1.15);
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-window">
+    <div class="chat-header">Chat com a gente!</div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="chat-message user">Estou insatisfeito com a entrega do meu pedido.</div>
+      <div class="chat-message agent">Lamentamos pela inconveniência. Você poderia fornecer seu número de pedido?</div>
+      <div class="chat-message user">Meu número de pedido é 12345.</div>
+      <div class="chat-message agent">Sinto muito por isso! Vamos verificar o status da sua entrega agora.</div>
+      <div class="chat-message user">O tamanho da roupa que recebi está errado.</div>
+      <div class="chat-message agent">Pedimos desculpas por isso. Você gostaria de trocar o item?</div>
+      <div class="chat-message user">Sim, gostaria do tamanho correto, por favor.</div>
+      <div class="chat-message agent">Entendemos, isso pode acontecer. Vamos garantir que você receba o tamanho correto o mais rápido possível!</div>
+      <div class="chat-message user">A qualidade do produto não corresponde ao que esperava.</div>
+      <div class="chat-message agent">Lamentamos que você não esteja satisfeito. Posso ajudar a iniciar uma devolução?</div>
+      <div class="chat-message user">Sim, por favor, como faço para devolver?</div>
+      <div class="chat-message agent">Vou enviar as instruções de devolução para o seu e-mail. Alguma outra dúvida?</div>
+      <div class="chat-message user">Não, muito obrigado pela ajuda.</div>
+    </div>
+    <div class="send-message-container">
+      <input type="text" id="message-input" placeholder="Digite sua mensagem...">
+      <button id="send-button">Enviar</button>
+    </div>
+  </div>
+
+  <div class="user-icon">
+    <a href="inicial.html">
+      <img src="chat.jpeg" alt="Conta do usuário">
+    </a>
+  </div>
+
+  <script>
+    // Função para adicionar a mensagem no chat
+    document.getElementById('send-button').addEventListener('click', function() {
+      const messageInput = document.getElementById('message-input');
+      const messageText = messageInput.value.trim();
+
+      if (messageText) {
+        const chatMessages = document.getElementById('chat-messages');
+
+        // Cria uma nova mensagem com o texto digitado
+        const newMessage = document.createElement('div');
+        newMessage.classList.add('chat-message', 'user');
+        newMessage.textContent = messageText;
+
+        // Adiciona a nova mensagem no chat
+        chatMessages.appendChild(newMessage);
+
+        // Adiciona a resposta do bot
+        const botMessage = document.createElement('div');
+        botMessage.classList.add('chat-message', 'agent');
+        botMessage.textContent = "Bot com problema, volte mais tarde por favor.";
+
+        chatMessages.appendChild(botMessage);
+
+        // Rola para a última mensagem
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        // Limpa o campo de entrada
+        messageInput.value = '';
+      }
+    });
+
+    // Permite enviar a mensagem pressionando Enter
+    document.getElementById('message-input').addEventListener('keypress', function(event) {
+      if (event.key === 'Enter') {
+        document.getElementById('send-button').click();
+      }
+    });
+  </script>
+</body>
+</html>

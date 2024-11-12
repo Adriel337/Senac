@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Usuário</title>
+  <style>
+    /* Estilos permanecem os mesmos */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #121212;
+      color: #f4f4f4;
+    }
+
+    .container {
+      background-color: #1a1a1a;
+      padding: 2em;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      width: 320px;
+      text-align: center;
+      border: 1px solid #333;
+    }
+
+    h2 {
+      font-family: 'Arial Black', sans-serif;
+      margin-bottom: 1em;
+      color: #ff3b3f;
+      font-size: 1.8em;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #f4f4f4;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      border-radius: 4px;
+      border: none;
+      background-color: #2a2a2a;
+      color: #f4f4f4;
+      font-size: 1em;
+    }
+
+    input::placeholder {
+      color: #888;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 4px;
+      background-color: #ff3b3f;
+      color: #f4f4f4;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 1em;
+    }
+
+    button:hover {
+      background-color: #ff5e5e;
+    }
+
+    .login-link {
+      margin-top: 20px;
+      font-size: 0.9em;
+      color: #f4f4f4;
+    }
+
+    .login-link a {
+      color: #ff3b3f;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .login-link a:hover {
+      color: #ff5e5e;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Cadastro</h2>
+    <form id="registerForm">
+      <label for="name">Nome</label>
+      <input type="text" id="name" name="name" placeholder="Digite seu nome" required>
+
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+
+      <label for="password">Senha</label>
+      <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+
+      <label for="confirmPassword">Confirmar Senha</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirme sua senha" required>
+
+      <button type="submit">Cadastrar</button>
+    </form>
+    <p class="login-link">Já tem uma conta? <a href="index.html">Faça login</a></p>
+  </div>
+
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+
+      if (!name || !email || !password || !confirmPassword) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        alert('As senhas não coincidem.');
+        return;
+      }
+
+      // Se a validação for bem-sucedida, redireciona para a página inicial sem mensagem
+      window.location.href = 'inicial.html';
+    });
+  </script>
+</body>
+</html>
